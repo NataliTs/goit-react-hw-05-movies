@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { GlobalStyle } from './GlobalStyle';
 import { Layout } from './Layout/Layout';
 
 export const App = () => {
   return (
     <Layout>
-      <GlobalStyle /> start
+      <GlobalStyle /> start...
     </Layout>
   );
 };
