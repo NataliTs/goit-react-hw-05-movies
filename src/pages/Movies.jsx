@@ -8,7 +8,6 @@ import { Button, Form, Input, InfoText } from './Movies.styled';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
 
@@ -17,11 +16,10 @@ const Movies = () => {
     const fetchMovieSearch = async () => {
       try {
         setIsLoading(true);
-        setError(null);
         const { results } = await getMovieBySearch(query);
         setMovies(results);
       } catch (error) {
-        setError(error.message);
+        alert(error.message);
       } finally {
         setIsLoading(false);
       }

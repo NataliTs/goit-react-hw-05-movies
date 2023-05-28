@@ -1,24 +1,24 @@
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getCastById } from '../../services/API';
 import { useEffect, useState } from 'react';
 import { CastItem, CastList } from './Cast.styled';
+import { Loader } from 'components/Loader/Loader';
 
 const Cast = () => {
   const { movieId } = useParams();
   const [castMovie, setCastMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
     const getCastMovie = async movieId => {
       try {
         setIsLoading(true);
-        setError(null);
         const { cast } = await getCastById(movieId);
         setCastMovie(cast);
         console.log(cast);
       } catch (error) {
-        setError(error.message);
+        alert(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -28,6 +28,7 @@ const Cast = () => {
 
   return (
     <div>
+      {isLoading ?? <Loader />}
       <h2>Cast</h2>
       {castMovie.length ? (
         <CastList>

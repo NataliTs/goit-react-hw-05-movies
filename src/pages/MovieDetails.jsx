@@ -16,7 +16,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [selectedMovie, setSelectedMovie] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const { title, release_date, poster_path, vote_average, overview, genres } =
     selectedMovie;
   const releaseDate = new Date(release_date);
@@ -30,11 +30,10 @@ const MovieDetails = () => {
     const getSelectedMovie = async movieId => {
       try {
         setIsLoading(true);
-        setError(null);
         const movieData = await getMovieById(movieId);
         setSelectedMovie(movieData);
       } catch (error) {
-        setError(error.message);
+        alert(error.message);
       }
     };
     getSelectedMovie(movieId);
@@ -50,6 +49,7 @@ const MovieDetails = () => {
   console.log(baclLinkRef);
   return (
     <MovieStyled>
+      {isLoading ?? <Loader />}
       <GoBackLink to={baclLinkRef.current}>
         <HiArrowNarrowLeft style={{ width: '25px', height: '25px' }} />
         Go back
