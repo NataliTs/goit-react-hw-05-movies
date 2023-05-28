@@ -8,16 +8,16 @@ import { BrowserRouter } from 'react-router-dom';
 const theme = {
   colors: {
     text: '#212121',
-    secondaryText: 'gray',
+    acentText: '#6164ce',
     white: '#fff',
     backgroundColor: '#6a6ac3',
-    acentBgcolor: '#303f9f',
+    acentBgcolor: '#6164ce',
     tableHeadColor: '#7189b2',
     message: '#b00a0a',
   },
   boxShadow: '0 8px 15px rgba(0, 0, 0, .1);',
   boxShadowHover: '0 15px 20px rgba(46, 229, 157, .4);',
-  border: '1px solid #fff',
+  border: '1px solid #e2dede',
 };
 
 ReactDOM.createRoot(document.getElementById('root')).render(
